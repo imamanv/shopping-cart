@@ -1,11 +1,11 @@
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/Routes/Home";
 import "./app.css";
 import Footer from "./components/Footer";
 import { Routes, Route } from "react-router-dom";
-import Products from "./components/Products";
-import SignIn from "./components/SignIn";
-import Registration from "./components/Registration";
+import Products from "./components/Routes/Products";
+import SignIn from "./components/Routes/SignIn";
+import Registration from "./components/Routes/Registration";
 
 function App() {
   return (
