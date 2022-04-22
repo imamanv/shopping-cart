@@ -1,8 +1,8 @@
-.header {
+/* .header {
   position: fixed;
   top: 0;
   width: 100%;
-}
+} */
 .nav-links {
   width: 65%;
   display: flex;
@@ -14,14 +14,12 @@
   align-items: center;
   background-color: antiquewhite;
 }
-.nav-links ul {
+.nav-links .prod-links,
+.nav-links .login-links {
   display: flex;
   padding: 0;
 }
-.nav-links li {
-  list-style: none;
-}
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   color: black;
   padding: 1rem;

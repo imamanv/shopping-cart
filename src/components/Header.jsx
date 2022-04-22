@@ -1,28 +1,26 @@
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
-    <header className="header">
-      <nav className="navbar">
-        <img className="nav-brand-img" src="static/images/logo.png" />
-        <div className="nav-links">
-          <ul>
-            <li>
-              <a href="#">Home</a>
-            </li>
-            <li>
-              <a href="#">Products</a>
-            </li>
-          </ul>
-          <ul>
-            <li>
-              <a href="#">Sign In</a>
-            </li>
-            <li>
-              <a href="#">Register</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+    <>
+      <header className="header">
+        <nav className="navbar">
+          <Link to="/">
+            <img className="nav-brand-img" src="static/images/logo.png" />
+          </Link>
+          <div className="nav-links">
+            <div className="prod-links">
+              <Link to="/">Home</Link>
+              <Link to="/products">Products</Link>
+            </div>
+            <div className="login-links">
+              <Link to="/signin">SignIn</Link>
+              <Link to="/register">Register</Link>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 }
 
