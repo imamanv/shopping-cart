@@ -18,10 +18,10 @@ function Header() {
           <div className="col col-3">
             <Link to="/">SingIn</Link>
             <Link to="/products">Register</Link>
-            <div className="cart-info">
+            {/* <div className="cart-info">
               <img src="static\images\cart.svg" alt="cart icon" />
               <p>0 items</p>
-            </div>
+            </div> */}
           </div>
         </nav>
       </div>
