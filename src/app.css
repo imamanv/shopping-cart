@@ -5,7 +5,6 @@
   width: 90%;
   margin: 0 auto;
 }
-
 header,
 footer {
   background-color: antiquewhite;
@@ -19,6 +18,9 @@ nav.row {
 .col a {
   font-size: 1.2rem;
   padding: 0.8em;
+}
+header a {
+  color: black;
 }
 .cart-info {
   margin-top: 0.8em;
@@ -49,7 +51,7 @@ footer p {
   border-bottom: 1px solid rgba(80, 80, 80, 0.17);
 }
 .category.row img {
-  width: 25%;
+  height: 200px;
 }
 .category-details {
   display: flex;
@@ -60,6 +62,101 @@ footer p {
 .explore-btn {
   border: none;
   background: #dc387c;
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 0.4em;
+}
+.products-page {
+  min-height: 90vh;
+  display: flex;
+}
+.side-bar ul li {
+  list-style: none;
+  border-bottom: 1px solid rgb(172, 172, 172);
+  padding: 0.5em;
+}
+.side-bar {
+  min-height: 90vh;
+  background-color: #eaeaea;
+  min-width: 20%;
+}
+.product img {
+  height: 200px;
+}
+.product {
+  border-bottom: 1px dotted black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+  padding: 0.5em;
+}
+.product-description {
+  background-color: #eaeaea;
+  flex: 1;
+}
+.products {
+  min-height: 90vh;
+  /* background-color: lightblue; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.2em;
+  grid-auto-rows: auto;
+}
+.price-buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buy-btn {
+  width: 40%;
+  padding: 0.5em;
+  border: none;
+  background-color: #dc387c;
+  color: white;
+}
+.login-page,
+.registration-page {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
+  margin-top: 2em;
+}
+.login-btn,
+.signup-btn {
+  margin: 0.8em 0;
+  width: 100%;
+  padding: 0.3em;
+  border: none;
+  color: white;
+  background-color: #dc387c;
+  font-size: 1rem;
+}
+.login-page h1 {
+  margin-bottom: 0.3em;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+.field input {
+  height: 30px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid rgb(0, 0, 0);
+}
+.field input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid rgb(0, 123, 151);
+}
+
+.registration-form,
+.login-form {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
