@@ -15,13 +15,15 @@ function Header() {
             <Link to="/">Home</Link>
             <Link to="/products">Products</Link>
           </div>
-          <div className="col col-3">
-            <Link to="/login">SingIn</Link>
-            <Link to="/signup">Register</Link>
-            {/* <div className="cart-info">
+          <div className="col col-3 account-details">
+            <div className="account-link">
+              <Link to="/login">SingIn</Link>
+              <Link to="/signup">Register</Link>
+            </div>
+            <div className="cart-info">
               <img src="static\images\cart.svg" alt="cart icon" />
               <p>0 items</p>
-            </div> */}
+            </div>
           </div>
         </nav>
       </div>
