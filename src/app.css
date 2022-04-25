@@ -261,11 +261,11 @@ footer {
 .cart {
   border: 1px solid black;
   background: #eaeaea;
-  min-height: 80vh;
+  min-height: 70vh;
   width: 30%;
   position: absolute;
   top: 90;
-  right: 5%;
+  right: 0%;
 }
 .cart-title {
   font-size: 1rem;
@@ -319,7 +319,7 @@ footer {
 .cart-item {
   display: flex;
   gap: 1em;
-  margin: 0.8em;
+  margin: 0.5em;
   background-color: white;
 }
 .cart-item-info {
