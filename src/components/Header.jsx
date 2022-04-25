@@ -9,27 +9,27 @@ function Header() {
         </div>
         <ul className="nav-list">
           <li className="nav-list-item">
-            <a href="" className="nav-link">
+            <Link to="/" className="nav-link">
               Home
-            </a>
+            </Link>
           </li>
           <li className="nav-list-item">
-            <a href="" className="nav-link">
+            <Link to="/products" className="nav-link">
               Products
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="account-links">
           <ul className="nav-list">
             <li className="nav-list-item">
-              <a href="" className="nav-link">
+              <Link to="/login" className="nav-link">
                 SignIn
-              </a>
+              </Link>
             </li>
             <li className="nav-list-item">
-              <a href="" className="nav-link">
+              <Link to="/signup" className="nav-link">
                 Register
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="cart-details">

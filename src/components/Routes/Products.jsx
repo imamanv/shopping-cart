@@ -1,3 +1,5 @@
+import Product from "../Product";
+
 function Products() {
   const products = [
     {
@@ -276,35 +278,35 @@ function Products() {
     },
   ];
   return (
-    <div className="container">
-      <div className="products-page">
-        <div className="side-bar">
-          <ul>
-            <li>Fruits</li>
-            <li>Bakery</li>
-            <li>Beverages</li>
-            <li>Beauty</li>
-            <li>Baby Care</li>
-          </ul>
+    <div className="products-page">
+      <div className="dropdown-bar">
+        <h4>Fruits and Vegetables</h4>
+        <div className="dropdown-menu">
+          <p className="dropdown-menu-icon">&gt;</p>
+          <div className="dropdown">
+            <ul>
+              <li>Fruits</li>
+              <li>Bakery</li>
+              <li>Beverages</li>
+              <li>Beauty</li>
+              <li>Baby Care</li>
+            </ul>
+          </div>
         </div>
-        <div className="products">
-          {products.map((product) => {
-            return (
-              <div className="product">
-                <h4>{product.name}</h4>
-                <img
-                  src={product.imageURL}
-                  alt={`picture of ${product.name}`}
-                />
-                <p className="product-description">{product.description}</p>
-                <div className="price-buy">
-                  <span>MRP RS.{product.price}</span>
-                  <button className="buy-btn">Buy Now</button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      </div>
+      <div className="side-bar">
+        <ul>
+          <li>Fruits</li>
+          <li>Bakery</li>
+          <li>Beverages</li>
+          <li>Beauty</li>
+          <li>Baby Care</li>
+        </ul>
+      </div>
+      <div className="products">
+        {products.map((product) => (
+          <Product key={product.id} product={product} />
+        ))}
       </div>
     </div>
   );
