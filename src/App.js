@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      {true && <Cart />}
+      {/* {true && <Cart />} */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />

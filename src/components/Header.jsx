@@ -3,30 +3,41 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <header>
-      <div className="container">
-        <nav className="row">
-          <div className="col col-1">
-            <img
-              src="static\images\logo.png"
-              alt="Brand Logo of Sabka Bazaar"
-            />
+      <nav className="navbar">
+        <div className="brand-img">
+          <img src="static\images\logo.png" alt="Brand Logo of Sabka Bazaar" />
+        </div>
+        <ul className="nav-list">
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              Home
+            </a>
+          </li>
+          <li className="nav-list-item">
+            <a href="" className="nav-link">
+              Products
+            </a>
+          </li>
+        </ul>
+        <div className="account-links">
+          <ul className="nav-list">
+            <li className="nav-list-item">
+              <a href="" className="nav-link">
+                SignIn
+              </a>
+            </li>
+            <li className="nav-list-item">
+              <a href="" className="nav-link">
+                Register
+              </a>
+            </li>
+          </ul>
+          <div className="cart-details">
+            <img src="static\images\cart.svg" alt="" />
+            <p>0 items</p>
           </div>
-          <div className="col col-2">
-            <Link to="/">Home</Link>
-            <Link to="/products">Products</Link>
-          </div>
-          <div className="col col-3 account-details">
-            <div className="account-link">
-              <Link to="/login">SingIn</Link>
-              <Link to="/signup">Register</Link>
-            </div>
-            <div className="cart-info">
-              <img src="static\images\cart.svg" alt="cart icon" />
-              <p>0 items</p>
-            </div>
-          </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </header>
   );
 }
