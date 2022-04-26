@@ -1,5 +1,13 @@
+import { useDispatch } from "react-redux";
+import { buyItem, getTotal } from "../redux/features/home/cartSlice";
+
 function Product(props) {
   const { product } = props;
+  const dispatch = useDispatch();
+  const buyNowHandler = () => {
+    dispatch(buyItem(product));
+    dispatch(getTotal());
+  };
   return (
     <div className="product">
       <div className="product-name">{product.name}</div>
@@ -7,7 +15,9 @@ function Product(props) {
       <p className="product-description">{product.description}</p>
       <div className="price-buy">
         <span>MRP RS.{product.price}</span>
-        <button className="buy-btn">Buy Now</button>
+        <button className="buy-btn" onClick={buyNowHandler}>
+          Buy Now
+        </button>
       </div>
     </div>
   );

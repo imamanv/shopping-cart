@@ -1,6 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { cartToggle } from "../../src/redux/features/home/cartSlice";
 
 function Header() {
+  const dispatch = useDispatch();
+  const { totalQuantity } = useSelector((state) => state.cart);
+  const cartToggler = () => {
+    dispatch(cartToggle());
+  };
   return (
     <header>
       <nav className="navbar">
@@ -32,9 +39,9 @@ function Header() {
               </Link>
             </li>
           </ul>
-          <div className="cart-details">
+          <div className="cart-details" onClick={cartToggler}>
             <img src="static\images\cart.svg" alt="" />
-            <p>0 items</p>
+            <p>{totalQuantity} items</p>
           </div>
         </div>
       </nav>

@@ -1,9 +1,20 @@
-import CategoryList from "../CategoryList";
-
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategories } from "../../redux/features/home/homeSlice";
+import Category from "../Category";
 function Home() {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.home);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
   return (
-    <div className="home-page">
-      <CategoryList />
+    <div>
+      {categories.map((category) => {
+        if (category.enabled)
+          return <Category key={category.id} category={category} />;
+      })}
     </div>
   );
 }

@@ -1,0 +1,39 @@
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const initialState = {
+  isLoading: false,
+  categories: [],
+};
+export const getCategories = createAsyncThunk(
+  "home/getCategories",
+  async () => {
+    try {
+      const resp = await axios.get("/server/categories/index.get.json");
+      return resp.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+export const homeSlice = createSlice({
+  name: "home",
+  initialState,
+  reducer: {},
+  extraReducers: {
+    [getCategories.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getCategories.fulfilled]: (state, action) => {
+      let categories = [...action.payload];
+      let sortedCategories = categories.sort((a, b) => {
+        if (a.order - b.order > 0) return 1;
+        else return -1;
+      });
+      state.categories = sortedCategories;
+    },
+    [getCategories.pending]: (state) => {
+      state.isLoading = false;
+    },
+  },
+});

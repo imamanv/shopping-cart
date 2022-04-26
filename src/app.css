@@ -43,6 +43,7 @@ header {
   background-color: var(--secondary-color);
   padding: 0.3em 0.5em;
   width: 100%;
+  cursor: pointer;
 }
 .cart-details img {
   width: 20px;
@@ -91,8 +92,14 @@ header {
 }
 .side-bar ul li {
   list-style: none;
-  border-bottom: 1px solid var(--secondary-color);
-  padding: 0.5em;
+  border-bottom: 1px solid var(--white-color);
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+
+.side-bar ul .active-category {
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }
 
 .product img {
@@ -141,7 +148,10 @@ header {
   background-color: var(--primary-color);
   width: 90vw;
   box-shadow: 0px 2px 5px 0px rgb(0, 0, 0, 0.3);
-  opacity: 0;
+  display: none;
+}
+.dropdown-active {
+  display: block;
 }
 .dropdown ul li {
   padding: 0.5em 0.4em;
@@ -174,6 +184,12 @@ header {
 /*--------------------------------------------------*/
 .cart-info img {
   width: 15%;
+}
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .cart-info {
   margin-top: 0.8em;
@@ -210,6 +226,7 @@ footer {
   border: none;
   background-color: var(--primary-color);
   color: var(--white-color);
+  cursor: pointer;
 }
 .login-page,
 .registration-page {
@@ -261,7 +278,7 @@ footer {
 .cart {
   border: 1px solid var(--black-color);
   background: var(--secondary-color);
-  min-height: 70vh;
+  min-height: 85vh;
   width: 30%;
   position: absolute;
   top: 90;
@@ -281,11 +298,37 @@ footer {
 }
 .cart-close-icon {
   font-size: 2rem;
+  cursor: pointer;
 }
 .cart {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+}
+.decrease-qty-btn,
+.increase-qty-btn {
+  text-align: center;
+  display: inline-block;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  margin: 0.2em;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.total-item-quantity {
+  margin: 0 0.2em;
+}
+.quantity-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-qty-times {
+  font-size: 2em;
+  margin-bottom: 0.1em;
 }
 .proceed-section {
   margin: 0.8em auto;
@@ -294,7 +337,7 @@ footer {
   padding: 1em;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
   color: var(--white-color);
 }
 .cart-footer {
@@ -323,7 +366,9 @@ footer {
   background-color: var(--white-color);
 }
 .cart-item-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 0 0.5em;
 }
