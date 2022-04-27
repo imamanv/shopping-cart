@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { cartToggle } from "../../src/redux/features/home/cartSlice";
 
 function Header() {
@@ -12,31 +12,56 @@ function Header() {
     <header>
       <nav className="navbar">
         <div className="brand-img">
-          <img src="static\images\logo.png" alt="Brand Logo of Sabka Bazaar" />
+          <Link to="/">
+            <img
+              src="static\images\logo.png"
+              alt="Brand Logo of Sabka Bazaar"
+            />
+          </Link>
         </div>
         <ul className="nav-list">
           <li className="nav-list-item">
-            <Link to="/" className="nav-link">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "nav-link nav-link-active" : "nav-link"
+              }
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-list-item">
-            <Link to="/products" className="nav-link">
+            <NavLink
+              to="/products"
+              className={({ isActive }) =>
+                isActive ? "nav-link nav-link-active" : "nav-link"
+              }
+            >
               Products
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <div className="account-links">
           <ul className="nav-list">
             <li className="nav-list-item">
-              <Link to="/login" className="nav-link">
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "nav-link nav-link-active" : "nav-link"
+                }
+              >
                 SignIn
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-list-item">
-              <Link to="/signup" className="nav-link">
+              <NavLink
+                to="/signup"
+                className={({ isActive }) =>
+                  isActive ? "nav-link nav-link-active" : "nav-link"
+                }
+              >
                 Register
-              </Link>
+              </NavLink>
             </li>
           </ul>
           <div className="cart-details" onClick={cartToggler}>

@@ -8,9 +8,14 @@ import Login from "./components/Routes/Login";
 import Registration from "./components/Routes/Registration";
 import Cart from "./components/Cart";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
   const { isCartOpen } = useSelector((state) => state.cart);
+  // useEffect(() => {
+  //   if (isCartOpen) document.querySelector("body").classList.add("cart-active");
+  //   else document.querySelector("body").classList.remove("cart-active");
+  // }, [isCartOpen]);
   return (
     <>
       <Header />

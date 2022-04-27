@@ -5,7 +5,6 @@ import Category from "../Category";
 function Home() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.home);
-
   useEffect(() => {
     dispatch(getCategories());
   }, []);
