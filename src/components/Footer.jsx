@@ -1,7 +1,8 @@
+import Data from "../dataProperties.json";
 function Footer() {
   return (
     <footer>
-      <p>Copyright &#169; 2011-2018 Sabka Bazaar Grocery Supplies Pvt Ltd </p>
+      <p>{Data.footerContent}</p>
     </footer>
   );
 }

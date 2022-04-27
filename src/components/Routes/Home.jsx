@@ -9,12 +9,12 @@ function Home() {
     dispatch(getCategories());
   }, []);
   return (
-    <div>
+    <main>
       {categories.map((category) => {
         if (category.enabled)
           return <Category key={category.id} category={category} />;
       })}
-    </div>
+    </main>
   );
 }
 

@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   cartToggle,
   reduceQuantity,
   increaseQuantity,
   getTotal,
-} from "../../src/redux/features/home/cartSlice";
+} from "../redux/features/cart/cartSlice";
 function Cart() {
   const { cartItems, totalQuantity, totalAmount } = useSelector(
     (state) => state.cart
   );
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getTotal());
@@ -24,7 +26,7 @@ function Cart() {
     dispatch(increaseQuantity(cartItem));
   };
   return (
-    <div className="cart">
+    <article className="cart">
       <div className="cart-title">
         <p>
           My Cart
@@ -100,12 +102,22 @@ function Cart() {
       <div className="cart-footer">
         {totalQuantity !== 0 && <p>Promo can be applied on payment page</p>}
         <div className="proceed-section">
-          {!totalQuantity && <p>Start Shopping</p>}
+          {!totalQuantity && (
+            <p
+              className="start-shopping"
+              onClick={() => {
+                navigate("/products");
+                dispatch(cartToggle());
+              }}
+            >
+              Start Shopping
+            </p>
+          )}
           {totalQuantity !== 0 && <p>Proceed to Checkout</p>}
           {totalQuantity !== 0 && <p>Rs.{totalAmount} &gt;</p>}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 export default Cart;

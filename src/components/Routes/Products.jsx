@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../redux/features/home/productsSlice";
+import { getProducts } from "../../redux/features/products/productsSlice";
 import { getCategories } from "../../redux/features/home/homeSlice";
 import CategoryList from "../CategoryList";
 import Product from "../Product";
@@ -18,6 +18,13 @@ function Products() {
     dispatch(getProducts());
     dispatch(getCategories());
   }, []);
+  useEffect(() => {
+    if (categories) {
+      categories.some((category) => {
+        if (category.order === 1) setCurrentCategory(category);
+      });
+    }
+  }, [categories]);
   useEffect(() => {
     if (products) setFilteredProducts(products);
   }, [products]);
@@ -65,9 +72,9 @@ function Products() {
     );
   };
   return (
-    <div className="products-page">
+    <main className="products-page">
       {!isCartOpen && (
-        <div className="dropdown-bar">
+        <aside className="dropdown-bar">
           <h4>{currentCategory.name}</h4>
           <div className="dropdown-menu">
             <p className="dropdown-menu-icon" onClick={categoryDropdownHandler}>
@@ -81,15 +88,15 @@ function Products() {
               {categoryList(categories)}
             </div>
           </div>
-        </div>
+        </aside>
       )}
-      <div className="side-bar">{categoryList(categories)}</div>
-      <div className="products">
+      <aside className="side-bar">{categoryList(categories)}</aside>
+      <article className="products">
         {filteredProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
-      </div>
-    </div>
+      </article>
+    </main>
   );
 }
 

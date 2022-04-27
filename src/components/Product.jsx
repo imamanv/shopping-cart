@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { buyItem, getTotal } from "../redux/features/home/cartSlice";
+import { buyItem, getTotal } from "../redux/features/cart/cartSlice";
 
 function Product(props) {
   const { product } = props;
@@ -9,7 +9,7 @@ function Product(props) {
     dispatch(getTotal());
   };
   return (
-    <div className="product">
+    <section className="product">
       <div className="product-name">{product.name}</div>
       <img src={product.imageURL} alt={`picture of ${product.name}`} />
       <p className="product-description">{product.description}</p>
@@ -19,7 +19,7 @@ function Product(props) {
           Buy Now
         </button>
       </div>
-    </div>
+    </section>
   );
 }
 

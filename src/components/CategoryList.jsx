@@ -7,7 +7,9 @@ function CategoryList(props) {
       onClick={(e) => {
         categorySelectHandler(e, category);
       }}
-      className={`${selectedCategory === category.id ? "active-category" : ""}`}
+      className={`category-list ${
+        selectedCategory === category.id ? "active-category" : ""
+      }`}
     >
       {category.name}
     </li>

@@ -8,14 +8,10 @@ import Login from "./components/Routes/Login";
 import Registration from "./components/Routes/Registration";
 import Cart from "./components/Cart";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import WrongRoute from "./components/Routes/WrongRoute";
 
 function App() {
   const { isCartOpen } = useSelector((state) => state.cart);
-  // useEffect(() => {
-  //   if (isCartOpen) document.querySelector("body").classList.add("cart-active");
-  //   else document.querySelector("body").classList.remove("cart-active");
-  // }, [isCartOpen]);
   return (
     <>
       <Header />
@@ -25,7 +21,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Registration />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<WrongRoute />} />
       </Routes>
       <Footer />
     </>

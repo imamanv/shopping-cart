@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { cartToggle } from "../../src/redux/features/home/cartSlice";
+import { cartToggle } from "../redux/features/cart/cartSlice";
+import Data from "../dataProperties.json";
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function Header() {
           <Link to="/">
             <img
               src="static\images\logo.png"
-              alt="Brand Logo of Sabka Bazaar"
+              alt="Brand Logo of Sabka Bazaar an E-commerce platform"
             />
           </Link>
         </div>
@@ -27,7 +28,7 @@ function Header() {
                 isActive ? "nav-link nav-link-active" : "nav-link"
               }
             >
-              Home
+              {Data.Home}
             </NavLink>
           </li>
           <li className="nav-list-item">
@@ -37,7 +38,7 @@ function Header() {
                 isActive ? "nav-link nav-link-active" : "nav-link"
               }
             >
-              Products
+              {Data.Products}
             </NavLink>
           </li>
         </ul>
@@ -50,7 +51,7 @@ function Header() {
                   isActive ? "nav-link nav-link-active" : "nav-link"
                 }
               >
-                SignIn
+                {Data.SignIn}
               </NavLink>
             </li>
             <li className="nav-list-item">
@@ -60,13 +61,18 @@ function Header() {
                   isActive ? "nav-link nav-link-active" : "nav-link"
                 }
               >
-                Register
+                {Data.Register}
               </NavLink>
             </li>
           </ul>
           <div className="cart-details" onClick={cartToggler}>
-            <img src="static\images\cart.svg" alt="" />
-            <p>{totalQuantity} items</p>
+            <img
+              src="static\images\cart.svg"
+              alt="clickable cart icon to open cart"
+            />
+            <p>
+              {totalQuantity} {Data.items}
+            </p>
           </div>
         </div>
       </nav>
