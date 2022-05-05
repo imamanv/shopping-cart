@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Registration() {
@@ -13,14 +13,13 @@ function Registration() {
   const [isEmptyField, setIsEmptyField] = useState(false);
   const [passwordError, setPasswordError] = useState(null);
   const [cPasswordError, setCPasswordError] = useState(null);
+  const [submitClicked, setSubmitClicked] = useState(false);
   const formHandler = (e) => {
     e.preventDefault();
     for (const field in formFields) {
       if (!formFields[field]) setIsEmptyField(true);
     }
-    if (!isEmptyField && !passwordError && !cPasswordError) {
-      navigate("/");
-    }
+    setSubmitClicked(true);
   };
   const fieldHandler = (e) => {
     setIsEmptyField(false);
@@ -48,6 +47,12 @@ function Registration() {
     }
     setFormFields({ ...formFields, [e.target.id]: e.target.value });
   };
+  useEffect(() => {
+    if (submitClicked && !isEmptyField && !passwordError && !cPasswordError) {
+      navigate("/");
+    }
+    setSubmitClicked(false);
+  }, [submitClicked, isEmptyField]);
   return (
     <div className="registration-page">
       <div className="registration-details">
@@ -65,24 +70,20 @@ function Registration() {
         </div>
         <div className="email-container field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" onChange={fieldHandler} />
+          <input type="text" id="email" onChange={fieldHandler} />
         </div>
         <div className="password-container field">
           <label htmlFor="password">Password</label>
           <input type="password" id="password" onChange={fieldHandler} />
-          {passwordError && (
-            <p className="empty-field-error">{passwordError}</p>
-          )}
+          {passwordError && <p className="error-field">{passwordError}</p>}
         </div>
         <div className="confirm-password-container field">
           <label htmlFor="cpassword">Confirm Password</label>
           <input type="password" id="cpassword" onChange={fieldHandler} />
-          {cPasswordError && (
-            <p className="empty-field-error">{cPasswordError}</p>
-          )}
+          {cPasswordError && <p className="error-field">{cPasswordError}</p>}
         </div>
         {isEmptyField && (
-          <p className="empty-field-error">None of the fields can be empty</p>
+          <p className="error-field">None of the fields can be empty</p>
         )}
         <button className="signup-btn">Signup</button>
       </form>

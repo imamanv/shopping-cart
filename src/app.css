@@ -397,7 +397,7 @@ footer {
   margin-bottom: 0.5em;
   border-bottom: 1px solid var(--secondary-color);
 }
-.empty-field-error {
+.error-field {
   color: red;
 }
 /********************************************/
