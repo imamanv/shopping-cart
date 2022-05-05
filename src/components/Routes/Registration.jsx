@@ -1,33 +1,91 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 function Registration() {
+  const navigate = useNavigate();
+  const [formFields, setFormFields] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+  const [isEmptyField, setIsEmptyField] = useState(false);
+  const [passwordError, setPasswordError] = useState(null);
+  const [cPasswordError, setCPasswordError] = useState(null);
+  const formHandler = (e) => {
+    e.preventDefault();
+    for (const field in formFields) {
+      if (!formFields[field]) setIsEmptyField(true);
+    }
+    if (!isEmptyField && !passwordError && !cPasswordError) {
+      navigate("/");
+    }
+  };
+  const fieldHandler = (e) => {
+    setIsEmptyField(false);
+    if (e.target.id === "password") {
+      if (e.target.value.length < 6)
+        setPasswordError("Password should contain atleast 6 characters");
+      else if (e.target.value.includes(" "))
+        setPasswordError("Password can't contain spaces");
+      else if (
+        formFields["cpassword"] &&
+        formFields["cpassword"] !== e.target.value
+      ) {
+        setCPasswordError("Password do not match");
+      } else {
+        setPasswordError("");
+        setCPasswordError("");
+      }
+    }
+    if (e.target.id === "cpassword") {
+      if (e.target.value !== formFields["password"]) {
+        setCPasswordError("Password do not match");
+      } else {
+        setCPasswordError("");
+      }
+    }
+    setFormFields({ ...formFields, [e.target.id]: e.target.value });
+  };
   return (
     <div className="registration-page">
       <div className="registration-details">
         <h1>Signup</h1>
         <p>We do not share your personal details with anyone.</p>
       </div>
-      <div className="registration-form">
+      <form className="registration-form" onSubmit={formHandler}>
         <div className="first-name-container field">
           <label htmlFor="fname">First Name</label>
-          <input type="text" id="fname" />
+          <input type="text" id="fname" onChange={fieldHandler} />
         </div>
         <div className="last-name-container field">
           <label htmlFor="lname">Last Name</label>
-          <input type="text" id="lname" />
+          <input type="text" id="lname" onChange={fieldHandler} />
         </div>
         <div className="email-container field">
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" onChange={fieldHandler} />
         </div>
         <div className="password-container field">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" />
+          <input type="password" id="password" onChange={fieldHandler} />
+          {passwordError && (
+            <p className="empty-field-error">{passwordError}</p>
+          )}
         </div>
         <div className="confirm-password-container field">
           <label htmlFor="cpassword">Confirm Password</label>
-          <input type="password" id="cpassword" />
+          <input type="password" id="cpassword" onChange={fieldHandler} />
+          {cPasswordError && (
+            <p className="empty-field-error">{cPasswordError}</p>
+          )}
         </div>
+        {isEmptyField && (
+          <p className="empty-field-error">None of the fields can be empty</p>
+        )}
         <button className="signup-btn">Signup</button>
-      </div>
+      </form>
     </div>
   );
 }

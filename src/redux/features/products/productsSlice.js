@@ -20,9 +20,6 @@ export const productsSlice = createSlice({
   initialState,
   reducer: {},
   extraReducers: {
-    [getProducts.pending]: (state) => {
-      //   state.isLoading = true;
-    },
     [getProducts.fulfilled]: (state, action) => {
       state.products = action.payload;
     },

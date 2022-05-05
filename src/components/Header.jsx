@@ -2,12 +2,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { cartToggle } from "../redux/features/cart/cartSlice";
 import Data from "../dataProperties.json";
+import { useState } from "react";
 
 function Header() {
   const dispatch = useDispatch();
   const { totalQuantity } = useSelector((state) => state.cart);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartToggler = () => {
     dispatch(cartToggle());
+  };
+  const menuHandler = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  const menuLinkHandler = (e) => {
+    setIsMenuOpen(false);
   };
   return (
     <header>
@@ -65,14 +73,65 @@ function Header() {
               </NavLink>
             </li>
           </ul>
-          <div className="cart-details" onClick={cartToggler}>
-            <img
-              src="static\images\cart.svg"
-              alt="clickable cart icon to open cart"
-            />
-            <p>
-              {totalQuantity} {Data.items}
-            </p>
+          <div className="cart-menu-container">
+            <div className="cart-details" onClick={cartToggler}>
+              <img
+                src="static\images\cart.svg"
+                alt="clickable cart icon to open cart"
+              />
+              <p>
+                {totalQuantity} {Data.items}
+              </p>
+            </div>
+            <div>
+              <p onClick={menuHandler} className="menu-icon">
+                Menu
+              </p>
+              <div className={`menu ${isMenuOpen ? "menu-active" : ""}`}>
+                <ul onClick={menuLinkHandler}>
+                  <li>
+                    <NavLink
+                      to="/"
+                      className={({ isActive }) =>
+                        isActive ? "menu-link-active" : ""
+                      }
+                    >
+                      {Data.Home}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/products"
+                      className={({ isActive }) =>
+                        isActive ? "menu-link-active" : ""
+                      }
+                    >
+                      {Data.Products}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "menu-link-active" : ""
+                      }
+                    >
+                      {Data.SignIn}
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/signup"
+                      className={({ isActive }) =>
+                        isActive ? "menu-link-active" : ""
+                      }
+                    >
+                      {Data.Register}
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

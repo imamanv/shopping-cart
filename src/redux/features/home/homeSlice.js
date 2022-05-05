@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  isLoading: false,
   categories: [],
 };
 export const getCategories = createAsyncThunk(
@@ -21,9 +20,6 @@ export const homeSlice = createSlice({
   initialState,
   reducer: {},
   extraReducers: {
-    [getCategories.pending]: (state) => {
-      state.isLoading = true;
-    },
     [getCategories.fulfilled]: (state, action) => {
       let categories = [...action.payload];
       let sortedCategories = categories.sort((a, b) => {

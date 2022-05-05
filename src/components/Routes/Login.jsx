@@ -1,11 +1,12 @@
 function Login() {
+  const loginFormHandler = () => {};
   return (
     <div className="login-page">
       <div className="login-details">
         <h1>Login</h1>
         <p>Get access to your Orders,Whishlist and Recommendations</p>
       </div>
-      <div className="login-form">
+      <form className="login-form" onSubmit={loginFormHandler}>
         <div className="email-container field">
           <label htmlFor="email">Email</label>
           <input type="email" id="email" />
@@ -15,7 +16,7 @@ function Login() {
           <input type="password" id="password" />
         </div>
         <button className="login-btn">Login</button>
-      </div>
+      </form>
     </div>
   );
 }
