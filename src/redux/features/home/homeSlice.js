@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
   categories: [],
+  banners: [],
 };
 export const getCategories = createAsyncThunk(
   "home/getCategories",
@@ -15,6 +16,15 @@ export const getCategories = createAsyncThunk(
     }
   }
 );
+
+export const getBanners = createAsyncThunk("home/getBanners", async () => {
+  try {
+    const resp = await axios.get("/server/banners/index.get.json");
+    return resp.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 export const homeSlice = createSlice({
   name: "home",
   initialState,
@@ -30,6 +40,9 @@ export const homeSlice = createSlice({
     },
     [getCategories.pending]: (state) => {
       state.isLoading = false;
+    },
+    [getBanners.fulfilled]: (state, action) => {
+      state.banners = action.payload;
     },
   },
 });

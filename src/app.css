@@ -400,6 +400,35 @@ footer {
 .error-field {
   color: red;
 }
+.banner-list {
+  display: flex;
+  height: 300px;
+}
+.banner-list img {
+  min-width: 100%;
+}
+.banner-container {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1em;
+  border-bottom: 1px solid var(--secondary-color);
+}
+.banner-btn {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(120, 120, 120, 0.2);
+  border: none;
+  color: white;
+}
+.btn-prev {
+  left: 0;
+}
+.btn-next {
+  right: 0;
+}
 /********************************************/
 @media (max-width: 480px) {
   .navbar .nav-list {
