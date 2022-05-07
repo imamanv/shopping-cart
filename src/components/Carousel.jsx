@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import Data from "../dataProperties.json";
 function Carousel(props) {
   const { banners } = props;
   const [currentSlide, setCurrentSlide] = useState(1);
@@ -57,10 +57,10 @@ function Carousel(props) {
         ))}
       </div>
       <button className="banner-btn btn-prev" onClick={bannerPrevHandler}>
-        PREV
+        {Data.PREV}
       </button>
       <button className="banner-btn btn-next" onClick={bannerNextHandler}>
-        NEXT
+        {Data.NEXT}
       </button>
       <div className="banner-navigation">
         {banners.map((_, id) => (

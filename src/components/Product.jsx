@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { buyItem, getTotal } from "../redux/features/cart/cartSlice";
+import Data from "../dataProperties.json";
 
 function Product(props) {
   const { product } = props;
@@ -14,9 +15,12 @@ function Product(props) {
       <img src={product.imageURL} alt={`picture of ${product.name}`} />
       <p className="product-description">{product.description}</p>
       <div className="price-buy">
-        <span>MRP RS.{product.price}</span>
+        <span>
+          {Data.MRP}
+          {product.price}
+        </span>
         <button className="buy-btn" onClick={buyNowHandler}>
-          Buy Now
+          {Data.BuyNow}
         </button>
       </div>
     </section>

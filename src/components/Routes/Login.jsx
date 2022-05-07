@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Data from "../../dataProperties.json";
 
 function Login() {
   const navigate = useNavigate();
@@ -23,12 +24,12 @@ function Login() {
   return (
     <div className="login-page">
       <div className="login-details">
-        <h1>Login</h1>
-        <p>Get access to your Orders,Whishlist and Recommendations</p>
+        <h1>{Data.Login}</h1>
+        <p>{Data.LoginSummary}</p>
       </div>
       <form className="login-form" onSubmit={loginFormHandler}>
         <div className="email-container field">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{Data.Email}</label>
           <input
             type="email"
             id="email"
@@ -38,7 +39,7 @@ function Login() {
           />
         </div>
         <div className="password-container field">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{Data.Password}</label>
           <input
             type="password"
             id="password"
@@ -48,7 +49,7 @@ function Login() {
           />
         </div>
         {loginError && <p className="error-field">{loginError}</p>}
-        <button className="login-btn">Login</button>
+        <button className="login-btn">{Data.Login}</button>
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Data from "../../dataProperties.json";
 
 function Registration() {
   const navigate = useNavigate();
@@ -56,36 +57,34 @@ function Registration() {
   return (
     <div className="registration-page">
       <div className="registration-details">
-        <h1>Signup</h1>
-        <p>We do not share your personal details with anyone.</p>
+        <h1>{Data.SignUp}</h1>
+        <p>{Data.SingupSummary}</p>
       </div>
       <form className="registration-form" onSubmit={formHandler}>
         <div className="first-name-container field">
-          <label htmlFor="fname">First Name</label>
+          <label htmlFor="fname">{Data.FirstName}</label>
           <input type="text" id="fname" onChange={fieldHandler} />
         </div>
         <div className="last-name-container field">
-          <label htmlFor="lname">Last Name</label>
+          <label htmlFor="lname">{Data.LastName}</label>
           <input type="text" id="lname" onChange={fieldHandler} />
         </div>
         <div className="email-container field">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{Data.Email}</label>
           <input type="text" id="email" onChange={fieldHandler} />
         </div>
         <div className="password-container field">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{Data.Password}</label>
           <input type="password" id="password" onChange={fieldHandler} />
           {passwordError && <p className="error-field">{passwordError}</p>}
         </div>
         <div className="confirm-password-container field">
-          <label htmlFor="cpassword">Confirm Password</label>
+          <label htmlFor="cpassword">{Data.ConfirmPassword}</label>
           <input type="password" id="cpassword" onChange={fieldHandler} />
           {cPasswordError && <p className="error-field">{cPasswordError}</p>}
         </div>
-        {isEmptyField && (
-          <p className="error-field">None of the fields can be empty</p>
-        )}
-        <button className="signup-btn">Signup</button>
+        {isEmptyField && <p className="error-field">{Data.emptyFieldError}</p>}
+        <button className="signup-btn">{Data.Signup}</button>
       </form>
     </div>
   );

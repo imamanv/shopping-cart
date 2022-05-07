@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Data from "../dataProperties.json";
 import {
   cartToggle,
   reduceQuantity,
@@ -29,7 +30,7 @@ function Cart() {
     <article className="cart">
       <div className="cart-title">
         <p>
-          My Cart
+          {Data.MyCart}
           {totalQuantity !== 0 && (
             <span>
               (
@@ -95,12 +96,12 @@ function Cart() {
       )}
       {!totalQuantity && (
         <div className="empty-cart">
-          <h4>No items in your cart</h4>
-          <p>Your favourite items are just a click away</p>
+          <h4>{Data.emptyCartMsg}</h4>
+          <p>{Data.emptyCartSuggestion}</p>
         </div>
       )}
       <div className="cart-footer">
-        {totalQuantity !== 0 && <p>Promo can be applied on payment page</p>}
+        {totalQuantity !== 0 && <p>{Data.cartPromoMsg}</p>}
         <div className="proceed-section">
           {!totalQuantity && (
             <p
@@ -110,10 +111,10 @@ function Cart() {
                 dispatch(cartToggle());
               }}
             >
-              Start Shopping
+              {Data.startShopping}
             </p>
           )}
-          {totalQuantity !== 0 && <p>Proceed to Checkout</p>}
+          {totalQuantity !== 0 && <p>{Data.checkout}</p>}
           {totalQuantity !== 0 && <p>Rs.{totalAmount} &gt;</p>}
         </div>
       </div>
