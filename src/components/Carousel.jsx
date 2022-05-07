@@ -1,5 +1,3 @@
-import { useEffect, useRef, useState } from "react";
-
 function Carousel(props) {
   const { banners } = props;
   let counter = 0;

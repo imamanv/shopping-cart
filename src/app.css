@@ -277,6 +277,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 10;
 }
 .cart-content {
   height: 60vh;
@@ -461,9 +462,6 @@ footer {
   }
   .registration-details {
     margin-bottom: 1em;
-  }
-  .cart {
-    right: 1%;
   }
   .brand-img img {
     height: 60px;
