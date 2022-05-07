@@ -1,34 +1,49 @@
+import { useEffect, useState } from "react";
+
 function Carousel(props) {
   const { banners } = props;
-  let counter = 0;
-  const imgs = document.querySelectorAll(".banner-images");
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [btnClicked, setBtnClicked] = useState(false);
+  const bannerImages = document.querySelectorAll(".banner-images");
   const bannerList = document.querySelector(".banner-list");
-  const bannerImgslength = imgs.length;
-  const bannerNextHandler = () => {
-    counter++;
-    if (counter === bannerImgslength) {
-      counter = 0;
-    }
-    bannerList.style.transform = `translateX(-${counter * 100}%)`;
-    if (counter === 0) {
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setBtnClicked(true);
+      setCurrentSlide((prev) => prev + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    if (btnClicked) {
       bannerList.style.transition = "none";
-      return;
+      if (currentSlide > bannerImages.length) {
+        bannerList.style.transform = `translateX(0%)`;
+        setCurrentSlide(1);
+      } else if (currentSlide === 0) {
+        bannerList.style.transform = `translateX(-${
+          (bannerImages.length - 1) * 100
+        }%`;
+        setCurrentSlide(bannerImages.length);
+      } else {
+        bannerList.style.transform = `translateX(-${
+          (currentSlide - 1) * 100
+        }%)`;
+        bannerList.style.transition = `transform 0.4s ease-in-out`;
+      }
     }
-    bannerList.style.transition = `transform 0.4s ease-in-out`;
+  }, [currentSlide, btnClicked]);
+  const bannerNextHandler = () => {
+    setBtnClicked(true);
+    setCurrentSlide(currentSlide + 1);
   };
   const bannerPrevHandler = () => {
-    counter--;
-    if (counter < 0) {
-      counter = bannerImgslength - 1;
-    }
-    bannerList.style.transform = `translateX(-${counter * 100}%)`;
-    if (counter === bannerImgslength - 1) {
-      bannerList.style.transition = "none";
-      return;
-    }
-    bannerList.style.transition = `transform 0.4s ease-in-out`;
+    setBtnClicked(true);
+    setCurrentSlide(currentSlide - 1);
   };
-
+  const dotClickHandler = (e) => {
+    setBtnClicked(true);
+    setCurrentSlide(+e.target.id.at(-1));
+  };
   return (
     <div className="banner-container">
       <div className="banner-list">
@@ -42,11 +57,23 @@ function Carousel(props) {
         ))}
       </div>
       <button className="banner-btn btn-prev" onClick={bannerPrevHandler}>
-        Prev
+        PREV
       </button>
       <button className="banner-btn btn-next" onClick={bannerNextHandler}>
-        Next
+        NEXT
       </button>
+      <div className="banner-navigation">
+        {banners.map((_, id) => (
+          <button
+            key={_.id}
+            id={`banner-dot-${id + 1}`}
+            className={`banner-dot ${
+              currentSlide === id + 1 ? "active-slide" : ""
+            }`}
+            onClick={dotClickHandler}
+          ></button>
+        ))}
+      </div>
     </div>
   );
 }
