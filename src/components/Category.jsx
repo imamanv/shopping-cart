@@ -7,7 +7,7 @@ function Category(props) {
       className="category"
       style={{ flexDirection: `${isOddOrder ? "row" : "row-reverse"}` }}
     >
-      <img src={imageUrl} alt={`image of ${name}`} />
+      <img src={imageUrl} alt={`${name} category`} />
       <section className="category-details">
         <h4>{name}</h4>
         <p>{description}</p>

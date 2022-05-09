@@ -65,6 +65,7 @@ function Carousel(props) {
       <div className="banner-navigation">
         {banners.map((_, id) => (
           <button
+            aria-label={`slide-${id + 1}`}
             key={_.id}
             id={`banner-dot-${id + 1}`}
             className={`banner-dot ${

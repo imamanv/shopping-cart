@@ -31,7 +31,7 @@ function Header() {
         <ul className="nav-list">
           <li className="nav-list-item">
             <NavLink
-              to="/"
+              to="/home"
               className={({ isActive }) =>
                 isActive ? "nav-link nav-link-active" : "nav-link"
               }
@@ -91,7 +91,7 @@ function Header() {
                 <ul onClick={menuLinkHandler}>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/home"
                       className={({ isActive }) =>
                         isActive ? "menu-link-active" : ""
                       }
